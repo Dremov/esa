@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure>
+	<!-- Make sub deployments isolated by default, so they cannot see each others 
+		classes without a Class-Path entry -->
+	<ear-subdeployments-isolated>false</ear-subdeployments-isolated>
+	<!-- if classes from libs are shared between ejbmodules within the ear and 
+		external applications it is necceary: - that those libs be declared as modules 
+		- that the ejbmodules themselves state a dependency on those modules - otherwise 
+		the ejbmodules will load those classes from the ear class loader, whereas 
+		external applications use the module class loader - in this case we get a 
+		class inconsistency because each of these class loaders holds their own instance 
+		of the class object! - i.e. we specify the modules before the subdeployments 
+		and refer back to the former from the latter - note that also the reference 
+		to the module in the "deployment" tag is necessary even though there are 
+		no explicit buildpath dependencies outside of the the ejbmodules themselves. 
+		However, as the jrs rest api is exposed via the jrs module (which is
+		covered by the deployment tag) also here we need to prevent that the ear 
+ 		class loader is used! Otherwise instances of classes that are created by
+		reflection in jrs will raise class inconsistencies with the classes used
+		by the ejbmodules! - note further that the classpath issue is only relevant 
+		if we want to use local ejb interfaces. If we communicate via remote interfaces 
+		there is no need to share any class resources. -->
+	<module name="deployment.org.dieschnittstelle.jee.esa.utils.jar">
+		<resources>
+			<resource-root path="lib/org.dieschnittstelle.jee.esa.utils.jar">
+			</resource-root>
+		</resources>
+	</module>
+	<module
+		name="deployment.org.dieschnittstelle.jee.esa.entities.erp.jar">
+		<resources>
+			<resource-root
+				path="lib/org.dieschnittstelle.jee.esa.entities.erp.jar">
+			</resource-root>
+		</resources>
+		<dependencies>
+			<module name="org.apache.commons.lang" />
+		</dependencies>
+	</module>
+	<module
+		name="deployment.org.dieschnittstelle.jee.esa.entities.crm.jar">
+		<resources>
+			<resource-root
+				path="lib/org.dieschnittstelle.jee.esa.entities.crm.jar">
+			</resource-root>
+		</resources>
+		<dependencies>
+			<module
+				name="deployment.org.dieschnittstelle.jee.esa.entities.erp.jar" />
+		</dependencies>
+	</module>
+	<sub-deployment name="org.dieschnittstelle.jee.esa.ejb.ejbmodule.crm.jar">
+		<dependencies>
+			<module
+				name="deployment.org.dieschnittstelle.jee.esa.entities.erp.jar" />
+			<module
+				name="deployment.org.dieschnittstelle.jee.esa.entities.crm.jar" />
+		</dependencies>
+	</sub-deployment>
+	<sub-deployment name="org.dieschnittstelle.jee.esa.ejb.ejbmodule.erp.jar">
+		<dependencies>
+			<module
+				name="deployment.org.dieschnittstelle.jee.esa.entities.erp.jar" />
+			<module
+				name="deployment.org.dieschnittstelle.jee.esa.entities.crm.jar" />
+		</dependencies>
+	</sub-deployment>
+	<deployment>
+		<dependencies>
+			<module
+				name="deployment.org.dieschnittstelle.jee.esa.entities.erp.jar" />
+			<module
+				name="deployment.org.dieschnittstelle.jee.esa.entities.crm.jar" />
+		</dependencies>
+	</deployment>
+</jboss-deployment-structure> 

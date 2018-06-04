@@ -1,10 +1,6 @@
 package org.dieschnittstelle.jee.esa.basics.annotations.stockitemtypes;
 
-import org.dieschnittstelle.jee.esa.basics.annotations.Initialise;
-import org.dieschnittstelle.jee.esa.basics.annotations.Brandname;
-import org.dieschnittstelle.jee.esa.basics.annotations.StockItem;
-import org.dieschnittstelle.jee.esa.basics.annotations.Purchase;
-import org.dieschnittstelle.jee.esa.basics.annotations.Units;
+import org.dieschnittstelle.jee.esa.basics.annotations.*;
 
 @StockItem
 public class Schokolade {
@@ -12,6 +8,7 @@ public class Schokolade {
 	@Units
 	private int anzahlStuecke;
 
+	@DisplayAs(value = "AnnoValue")
 	private String marke;
 
 	public int getAnzahlStuecke() {

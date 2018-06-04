@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:ejb="http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd"
+	version="3.1">
+	<display-name>org.dieschnittstelle.jee.esa.shared.ejbmodule.crm</display-name>
+	<enterprise-beans>
+		<!-- this is for configuring a timeout for the shopping cart implemented as stateful EJB -->
+		<session>
+			<ejb-name>ShoppingCartStateful</ejb-name>
+			<!-- <ejb-class>ShoppingCartStateful</ejb-class>  -->
+			<!-- UE EJB1: setzen Sie den timeout auf 100 -->
+			<stateful-timeout>
+				<timeout>1000000</timeout>
+				<unit>Milliseconds</unit>
+			</stateful-timeout>
+		</session>
+		<!-- the following entry specifies a custom configuration parameter for the RESTful shopping cart implementation -->
+		<session>
+			<ejb-name>ShoppingCartRESTServiceImpl</ejb-name>
+			<!-- values of env-entries will be injected into @Resource-annotated attributes of the corresponding EJB -->
+			<env-entry>
+				<env-entry-name>idle-timeout</env-entry-name>
+				<env-entry-type>java.lang.Long</env-entry-type>
+				<env-entry-value>1000000</env-entry-value>
+			</env-entry>
+		</session>
+	</enterprise-beans>
+	<interceptors>
+		<interceptor>
+			<interceptor-class>org.dieschnittstelle.jee.esa.ejb.interceptors.LoggingInterceptor</interceptor-class>
+			<around-invoke>
+				<method-name>logMethod</method-name>
+			</around-invoke>
+		</interceptor>
+	</interceptors>
+	<assembly-descriptor>
+		<interceptor-binding>
+			<ejb-name>*</ejb-name>
+			<interceptor-class>org.dieschnittstelle.jee.esa.ejb.interceptors.LoggingInterceptor</interceptor-class>
+		</interceptor-binding>
+	</assembly-descriptor>
+</ejb-jar>

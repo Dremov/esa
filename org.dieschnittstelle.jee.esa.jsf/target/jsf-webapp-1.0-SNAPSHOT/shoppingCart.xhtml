@@ -1,0 +1,125 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<!--  h:head is required in order for ajax support to work -->
+<h:head>
+	<title>shoppingCart.xhtml</title>
+</h:head>
+<body>
+	<!--  display the items -->
+	<h3>Warenkorb</h3>
+	<h:dataTable value="#{shoppingCartModel.items}" var="product"
+				 border="1" id="cartTable">
+		<h:column>
+			<f:facet name="header">Name</f:facet>#{product.productObj.name}</h:column>
+		<h:column>
+			<f:facet name="header">Typ</f:facet>#{product.productObj.productType}</h:column>
+		<h:column>
+			<f:facet name="header">Anzahl</f:facet>
+			<h:form>
+				<h:inputText value="#{product.units}" size="1" name="units"
+					validator="#{shoppingSessionVC.validateUnitsUpdate}">
+					<!-- attributes are not included in the rendered html, but only dealt with locally, so we get the correct types -->
+					<f:attribute name="erpProductId" value="#{product.erpProductId}" />
+				</h:inputText>
+				<!--  the action is not passed to the shopping cart, but to the view controller because the latter is responsible for handling actions. Before the action is applied the validator for the provided value will be executed  -->
+				<h:commandButton id="updateButton"
+					action="#{shoppingSessionVC.updateProductBundle}"
+					value="aktualisieren">
+					<f:param name="id" value="#{product.id}" />
+				</h:commandButton>
+			</h:form>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Preis</f:facet>
+			<!-- here we apply operators within the EL expression and a number converter for displaying currencies (including the EURO-Sign...) -->
+			<h:outputText
+				value="#{(product.productObj.price * product.units)/100}">
+				<f:convertNumber type="currency" currencyCode="EUR" />
+			</h:outputText>
+		</h:column>
+	</h:dataTable>
+
+	<!--  display error messages that are related to the 'cartTable' - this name can be chosen arbitrarily by the application -->
+	<h:message for="cartTable" errorStyle="color:red; display:block" />
+
+	<!--  this is a 'back' action to he list of items that explicitly specifies the name of the view to which we want to return -->
+	<h:form>
+		<h:commandLink action="products" value="zur Produktliste"
+			type="submit" />
+	</h:form>
+
+	<!--  select the touchpoint -->
+	<h3>Filialauswahl</h3>
+
+	<h:form>
+		<!--  this realises an html select element / combo box which we associate with a value change listener. As the selected value is passed as a string and the touchpoint attribute is a AbstractTouchpoint instance, we need a converter to map the string to the touchpoint and vice versa  -->
+		<h:selectOneMenu value="#{shoppingSessionVC.touchpoint}"
+			valueChangeListener="#{shoppingSessionVC.onTouchpointSelectionChanged}"
+			id="touchpointSelection"
+			converter="#{shoppingSessionVC.touchpointConverter}">
+			<!--  these are the values that are offered as a selection -->
+			<f:selectItems value="#{shoppingSessionVC.availableTouchpoints}" var="tp" itemLabel="#{tp.name}"/>
+		</h:selectOneMenu>
+		<h:commandButton type="submit" id="setTouchpoint" value="auswaehlen" />
+		<h:outputText value="#{shoppingSessionVC.touchpoint.name}" />
+	</h:form>
+
+	<!--  set the customer data -->
+	<h3>Kundendaten</h3>
+	<h:form id="customerForm">
+		<!--  display error messages, the for attribute coincides with the id attribute of element whose messages are displayed here -->
+		<h:message for="email" errorStyle="color:red; display:block" />
+		<h:message for="customerForm" errorStyle="color:red; display:block" />
+		<table>
+			<tr>
+				<td>Email:</td>
+				<td><h:inputText id="email" label="Email"
+						value="#{shoppingSessionVC.customer.email}" size="30">
+						<f:validateRequired />
+						<f:validateRegex
+							pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+					</h:inputText></td>
+			</tr>
+			<!--  a checkbox that indicates whether we have a new or a returning customer -->
+			<tr>
+				<td>Neukunde</td>
+				<td><h:selectBooleanCheckbox title=""
+						value="#{shoppingSessionVC.newCustomer}">
+						<!--  any change of selection will result in an ajax request to the shoppingSessionVC, from whose return value we will take the elements firstName, lastName and registerCustomer and replace the existing elements with the new ones -->
+						<f:ajax listener="#{shoppingSessionVC.onNewCustomerCheckChanged}"
+							render="firstName lastName registerCustomer" />
+					</h:selectBooleanCheckbox></td>
+			</tr>
+			<!--  the following two inputs are only active if we have a new customer -->
+			<tr>
+				<td>Nachname:</td>
+				<td><h:inputText id="lastName"
+						readonly="#{not shoppingSessionVC.newCustomer}"
+						value="#{shoppingSessionVC.customer.lastName}">
+						<f:validateLength minimum="2" maximum="30" />
+					</h:inputText></td>
+			</tr>
+			<tr>
+				<td>Vorname:</td>
+				<td><h:inputText id="firstName"
+						readonly="#{not shoppingSessionVC.newCustomer}"
+						value="#{shoppingSessionVC.customer.firstName}">
+						<f:validateLength minimum="2" maximum="30" />
+					</h:inputText></td>
+			</tr>
+		</table>
+		<!--  an example for using different button texts based on context information -->
+		<h:commandButton type="submit" id="registerCustomer"
+			value="#{shoppingSessionVC.newCustomer ? 'Registrieren' : 'Anmelden'}"
+			action="#{shoppingSessionVC.registerCustomer}" />
+	</h:form>
+
+
+	<h:form>
+		<h:commandButton binding="#{shoppingSessionVC.doPurchaseCommand}"
+			type="submit" id="purchase" value="Kauf abschliessen"
+			action="#{shoppingSessionVC.purchaseProducts}" />
+	</h:form>
+</body>
+</html>

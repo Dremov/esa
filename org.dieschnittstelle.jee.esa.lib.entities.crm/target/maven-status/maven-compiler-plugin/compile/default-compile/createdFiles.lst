@@ -1,0 +1,10 @@
+org/dieschnittstelle/jee/esa/entities/crm/MobileTouchpoint.class
+org/dieschnittstelle/jee/esa/entities/crm/ShoppingCartItem.class
+org/dieschnittstelle/jee/esa/entities/crm/Gender.class
+org/dieschnittstelle/jee/esa/entities/crm/Location.class
+org/dieschnittstelle/jee/esa/entities/crm/StationaryTouchpoint.class
+org/dieschnittstelle/jee/esa/entities/crm/Customer.class
+org/dieschnittstelle/jee/esa/entities/crm/Address.class
+org/dieschnittstelle/jee/esa/entities/crm/CustomerTransaction.class
+org/dieschnittstelle/jee/esa/entities/crm/AbstractTouchpoint.class
+org/dieschnittstelle/jee/esa/entities/crm/CampaignExecution.class

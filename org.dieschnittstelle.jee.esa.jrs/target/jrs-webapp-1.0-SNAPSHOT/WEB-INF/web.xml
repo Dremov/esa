@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <welcome-file-list>
+        <welcome-file>gui.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- JK: the listener that initialises and finalises the data storage (taken from the org.dieschnittstelle.jee.esa.serect)-->
+    <listener>
+        <listener-class>org.dieschnittstelle.jee.esa.ser.TouchpointServletContextListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.dieschnittstelle.jee.esa.ser.ProductServletContextListener</listener-class>
+    </listener>
+
+    <!-- the logging filter that tracks the http requests -->
+    <filter>
+        <display-name>HttpTrafficLoggingFilter</display-name>
+        <filter-name>HttpTrafficLoggingFilter</filter-name>
+        <filter-class>org.dieschnittstelle.jee.esa.ser.HttpTrafficLoggingFilter</filter-class>
+        <async-supported>true</async-supported>
+    </filter>
+    <filter-mapping>
+        <filter-name>HttpTrafficLoggingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+</web-app>

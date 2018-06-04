@@ -1,0 +1,7 @@
+org/dieschnittstelle/jee/esa/jrs/WebAPIRoot.class
+org/dieschnittstelle/jee/esa/ser/ProductServletContextListener.class
+org/dieschnittstelle/jee/esa/ser/TouchpointServletContextListener.class
+org/dieschnittstelle/jee/esa/jrs/ProductCRUDServiceImpl.class
+org/dieschnittstelle/jee/esa/ser/HttpTrafficLoggingFilter.class
+org/dieschnittstelle/jee/esa/jrs/TouchpointCRUDServiceImpl.class
+org/dieschnittstelle/jee/esa/jrs/TouchpointCRUDServiceImplAsync.class

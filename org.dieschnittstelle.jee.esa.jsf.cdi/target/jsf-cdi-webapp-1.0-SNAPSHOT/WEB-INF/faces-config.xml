@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+  <application>
+  </application>
+  <!--  declare a phase listener that logs the processig phases -->
+  <lifecycle>
+      <phase-listener>org.dieschnittstelle.jee.esa.jsf.LoggingPhaseListener</phase-listener>
+  </lifecycle>
+  <!--  configure the shopping cart bean - in this implementation, we use cdi annotations for dealing with this -->
+  <!-- <managed-bean>
+    <description>Shopping Session View Controller</description>
+    <managed-bean-name>shoppingSessionVC</managed-bean-name>
+    <managed-bean-class> org.dieschnittstelle.jee.esa.jsf.controller.ShoppingSessionViewController</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <managed-property>
+       <property-name>shoppingCartModel</property-name>
+       <property-class>org.dieschnittstelle.jee.esa.jsf.model.ShoppingCartModel</property-class>
+       <value>#{shoppingCartModel}</value>
+    </managed-property>
+  </managed-bean> -->
+</faces-config>

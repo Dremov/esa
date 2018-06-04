@@ -1,0 +1,14 @@
+<datasources>
+	<!-- xa datasource for distributed transactions -->
+	<!-- see http://www.ironjacamar.org/doc/userguide/1.1/en-US/html/apc.html -->
+	<!--<xa-datasource jndi-name="java:/crm_DS" pool-name="crm_Pool">-->
+		<!--<xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>-->
+		<!--<xa-datasource-property name="URL">jdbc:h2:tcp://localhost/~/crm_erp_db</xa-datasource-property>-->
+		<!--<security>-->
+			<!--&lt;!&ndash; Have to defined as a primary property - otherwise it won't work &ndash;&gt;-->
+			<!--<user-name>sa</user-name>-->
+			<!--&lt;!&ndash; Have to defined as a primary property - otherwise it won't work &ndash;&gt;-->
+			<!--<password></password>-->
+		<!--</security>-->
+	<!--</xa-datasource>-->
+</datasources>

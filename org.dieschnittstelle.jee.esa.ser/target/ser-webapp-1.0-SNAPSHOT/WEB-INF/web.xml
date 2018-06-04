@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>org.dieschnittstelle.jee.esa.ser</display-name>
+	<welcome-file-list>
+		<welcome-file>gui/touchpoints/read</welcome-file>
+	</welcome-file-list>
+	<!-- the listener that initialises and finalises the data storage -->
+	<listener>
+		<listener-class>org.dieschnittstelle.jee.esa.ser.TouchpointServletContextListener</listener-class>
+	</listener>
+	<!-- the logging filter that tracks the http requests -->
+	<filter>
+		<display-name>HttpTrafficLoggingFilter</display-name>
+		<filter-name>HttpTrafficLoggingFilter</filter-name>
+		<filter-class>org.dieschnittstelle.jee.esa.ser.HttpTrafficLoggingFilter</filter-class>
+		<async-supported>true</async-supported>
+	</filter>
+	<filter-mapping>
+		<filter-name>HttpTrafficLoggingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- the servlet handles requests from guis -->
+	<servlet>
+		<description></description>
+		<display-name>TouchpointGUIServlet</display-name>
+		<servlet-name>TouchpointGUIServlet</servlet-name>
+		<servlet-class>org.dieschnittstelle.jee.esa.ser.TouchpointGUIServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TouchpointGUIServlet</servlet-name>
+		<url-pattern>/gui/touchpoints/*</url-pattern>
+	</servlet-mapping>
+	<!-- the servlet that provides programmatic touchpoint access as a web service -->
+	<servlet>
+		<description></description>
+		<display-name>TouchpointServiceServlet</display-name>
+		<servlet-name>TouchpointServiceServlet</servlet-name>
+		<servlet-class>org.dieschnittstelle.jee.esa.ser.TouchpointServiceServlet</servlet-class>
+		<async-supported>true</async-supported>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TouchpointServiceServlet</servlet-name>
+		<url-pattern>/api/touchpoints/*</url-pattern>
+	</servlet-mapping>
+	<!--  the filter that blocks access to the gui servlet for clients without html capabilities -->
+	<filter>
+	    <filter-name>TouchpointGUIServletFilter</filter-name>
+	    <filter-class>org.dieschnittstelle.jee.esa.ser.TouchpointGUIServletFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>TouchpointGUIServletFilter</filter-name>
+	    <servlet-name>TouchpointGUIServlet</servlet-name>	    
+	</filter-mapping>
+</web-app>

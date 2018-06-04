@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Dependencies: deployment.org.dieschnittstelle.jee.esa.ejb.ear.org.dieschnittstelle.jee.esa.ejb.ejbmodule.crm.jar, deployment.org.dieschnittstelle.jee.esa.ejb.ear.org.dieschnittstelle.jee.esa.ejb.ejbmodule.erp.jar, deployment.org.dieschnittstelle.jee.esa.entities.erp.jar, deployment.org.dieschnittstelle.jee.esa.entities.crm.jar, deployment.org.dieschnittstelle.jee.esa.utils.jar
+

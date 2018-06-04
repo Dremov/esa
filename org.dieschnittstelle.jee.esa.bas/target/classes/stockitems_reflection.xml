@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stockitems>
+    <stockitem>
+       <brandname>Milka</brandname>
+       <class>org.dieschnittstelle.jee.esa.basics.reflection.stockitemtypes.Chocolate</class>
+       <units>24</units>        
+       <price>119</price>
+    </stockitem>
+    <stockitem>
+       <brandname>Ritter Sport</brandname>
+       <class>org.dieschnittstelle.jee.esa.basics.reflection.stockitemtypes.Chocolate</class>
+       <units>16</units>        
+       <price>99</price>
+    </stockitem>    
+    <stockitem>
+       <brandname>Mark Brandenburg</brandname>
+       <class>org.dieschnittstelle.jee.esa.basics.reflection.stockitemtypes.Milk</class>
+       <units>10</units>        
+       <price>109</price>
+    </stockitem>
+</stockitems>
+

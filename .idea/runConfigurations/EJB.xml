@@ -11,12 +11,11 @@
       <option name="SERVER" />
       <option name="BINDING_SET_NAME" value="" />
       <option name="DOMAIN" value="false" />
-      <option name="SERVER_GROUP" value="main-server-group" />
+      <option name="SERVER_GROUP" />
       <option name="USERNAME" value="" />
       <option name="PASSWORD" value="" />
     </server-settings>
     <predefined_log_file id="JBoss" enabled="true" />
-    <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
     <RunnerSettings RunnerId="Debug">
       <option name="DEBUG_PORT" value="61720" />
     </RunnerSettings>

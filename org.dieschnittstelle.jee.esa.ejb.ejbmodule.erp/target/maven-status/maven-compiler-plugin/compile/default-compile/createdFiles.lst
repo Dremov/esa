@@ -1,0 +1,8 @@
+org/dieschnittstelle/jee/esa/ejb/ejbmodule/erp/StockSystemLocal.class
+org/dieschnittstelle/jee/esa/ejb/ejbmodule/erp/crud/ProductCRUDRemote.class
+org/dieschnittstelle/jee/esa/ejb/ejbmodule/erp/crud/PointOfSaleCRUDStateless.class
+org/dieschnittstelle/jee/esa/ejb/ejbmodule/erp/StockSystemRemote.class
+org/dieschnittstelle/jee/esa/ejb/ejbmodule/erp/crud/PointOfSaleCRUDRemote.class
+org/dieschnittstelle/jee/esa/ejb/ejbmodule/erp/crud/PointOfSaleCRUDLocal.class
+org/dieschnittstelle/jee/esa/ejb/ejbmodule/erp/StockSystemRESTService.class
+org/dieschnittstelle/jee/esa/ejb/ejbmodule/erp/crud/StockItemCRUDLocal.class

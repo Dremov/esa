@@ -1,0 +1,10 @@
+org/dieschnittstelle/jee/esa/entities/erp/ProductType.class
+org/dieschnittstelle/jee/esa/entities/erp/PointOfSale.class
+org/dieschnittstelle/jee/esa/entities/erp/ProductBundle.class
+org/dieschnittstelle/jee/esa/entities/erp/Campaign.class
+org/dieschnittstelle/jee/esa/entities/erp/AbstractProduct.class
+org/dieschnittstelle/jee/esa/entities/erp/ProductAtPosPK.class
+org/dieschnittstelle/jee/esa/entities/GenericCRUDExecutor.class
+org/dieschnittstelle/jee/esa/entities/erp/IndividualisedProductItem.class
+org/dieschnittstelle/jee/esa/entities/GenericCRUDEntity.class
+org/dieschnittstelle/jee/esa/entities/erp/StockItem.class

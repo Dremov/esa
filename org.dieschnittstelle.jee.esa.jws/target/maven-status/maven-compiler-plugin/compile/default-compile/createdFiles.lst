@@ -1,0 +1,6 @@
+org/dieschnittstelle/jee/esa/jrs/TouchpointCRUDServiceRESTImpl.class
+org/dieschnittstelle/jee/esa/jrs/WebAPIRoot.class
+org/dieschnittstelle/jee/esa/ser/HttpTrafficLoggingFilter.class
+org/dieschnittstelle/jee/esa/ser/TouchpointServletContextListener.class
+org/dieschnittstelle/jee/esa/jrs/ITouchpointCRUDServiceREST.class
+org/dieschnittstelle/jee/esa/jws/TouchpointCRUDService.class

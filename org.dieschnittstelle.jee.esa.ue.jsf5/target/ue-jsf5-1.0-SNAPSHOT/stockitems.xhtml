@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
+<head>
+	<title>stockitems.xhtml</title>
+</head>
+<body>
+<!--  display the stock items -->
+<h3>Warenlager</h3>
+<!--  TODO: create a table that reads out all items from the stockSystemVC, iterate on the item variable -->
+<h:dataTable value="" var="" border="1" id="itemsTable">
+	<h:column>
+		<!--  include the name of the pos / touchpoint -->
+		<f:facet name="header">Verkaufsstelle</f:facet>
+		<!--  TODO: call a method on the vc that takes the id of the item's point of sale and returns the name of the corresponding touchpoint -->
+	</h:column>
+	<h:column>
+		<!--  include the name of the product -->
+		<f:facet name="header">Produktname</f:facet>
+		<!--  TODO: insert the value reference here -->
+	</h:column>
+	<h:column>
+		<!--  include the type of the product -->
+		<f:facet name="header">Produkttyp</f:facet>
+		<!--  TODO: insert the value reference here -->
+	</h:column>
+	<!--  TODO: include the units value and allow to manipulate it -->
+	<h:column>
+		<f:facet name="header">Anzahl</f:facet>
+		<h:form>
+			<h:inputText value="" size="3" name="units" />
+			<!--  the action that updates the units: invoke the updateUnits method on stockSystem  -->
+			<h:commandButton id="updateUnitsButton" action="#{lorem.ipsum}"
+							 value="aktualisieren">
+				<!-- pass an appropriate id or ids -->
+				<f:param name="" value="" />
+			</h:commandButton>
+		</h:form>
+	</h:column>
+	<!-- TODO: add the price which may also be modified -->
+	<h:column>
+		<f:facet name="header">Preis</f:facet>
+		<h:form>
+			<h:inputText value="" size="3" name="price" />
+			<!--  the action that updates the price through invoking the updatePrice method on stockSystem. This method needs to be declared and implemented in the EJB and then be called from the action implementation !  -->
+		</h:form>
+	</h:column>
+</h:dataTable>
+<!--  TODO: we add a button to refresh the item list actually reading out all stock items again - do not forget to wrap it into an h:form element -->
+<h:form>
+	<h:commandButton id="refreshView" action="#{dolor.sit}"
+					 value="aktualisieren" />
+</h:form>
+<!--  TODO: add another button to simulate a purchase action (for JSF6) -->
+<h:form>
+	<h:commandButton id="doShopping" action="#{amet.sed}"
+					 value="einkaufen" />
+</h:form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <property name="ant.earName" value="org.dieschnittstelle.jee.esa.ejb"/>
+  <property name="ant.projectName" value="org.dieschnittstelle.jee.esa.ejb"/>
+  <echo message="RUNNING ANT in /Users/Dremov/IdeaProjects/org.dieschnittstelle.jee.esa.mvn/org.dieschnittstelle.jee.esa.applications.jsf for artifact ejb-earapp-1.0-SNAPSHOT with name ${ant.earName}"/>
+  <delete file="/Users/Dremov/IdeaProjects/org.dieschnittstelle.jee.esa.mvn/org.dieschnittstelle.jee.esa.applications.jsf/../${ant.projectName}/target/ejb-earapp-1.0-SNAPSHOT/META-INF/application.xml"/>
+  <delete file="/Users/Dremov/IdeaProjects/org.dieschnittstelle.jee.esa.mvn/org.dieschnittstelle.jee.esa.applications.jsf/../${ant.projectName}/target/ejb-earapp-1.0-SNAPSHOT.ear"/>
+  <jar basedir="/Users/Dremov/IdeaProjects/org.dieschnittstelle.jee.esa.mvn/org.dieschnittstelle.jee.esa.applications.jsf/../${ant.projectName}/target/ejb-earapp-1.0-SNAPSHOT" destfile="/Users/Dremov/IdeaProjects/org.dieschnittstelle.jee.esa.mvn/org.dieschnittstelle.jee.esa.applications.jsf/target/${ant.earName}.ear"/>
+  <copy file="/Users/Dremov/IdeaProjects/org.dieschnittstelle.jee.esa.mvn/org.dieschnittstelle.jee.esa.applications.jsf/../${ant.projectName}/target/${ant.earName}.ear" tofile="/Users/Dremov/IdeaProjects/org.dieschnittstelle.jee.esa.mvn/org.dieschnittstelle.jee.esa.applications.jsf/target/ejb-earapp-1.0-SNAPSHOT.ear"/>
+  <delete file="/Users/Dremov/IdeaProjects/org.dieschnittstelle.jee.esa.mvn/org.dieschnittstelle.jee.esa.applications.jsf/../${ant.projectName}/target/ejb-earapp-1.0-SNAPSHOT.ear"/>
+</target>
+</project>

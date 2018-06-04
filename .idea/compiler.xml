@@ -1,27 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <resourceExtensions />
-    <wildcardResourcePatterns>
-      <entry name="!?*.java" />
-      <entry name="!?*.form" />
-      <entry name="!?*.class" />
-      <entry name="!?*.groovy" />
-      <entry name="!?*.scala" />
-      <entry name="!?*.flex" />
-      <entry name="!?*.kt" />
-      <entry name="!?*.clj" />
-      <entry name="!?*.aj" />
-    </wildcardResourcePatterns>
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="false">
-        <processorPath useClasspath="true" />
-      </profile>
-      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+      <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
         <module name="bas" />
         <module name="demo-bas" />
         <module name="ejb-client" />
@@ -39,6 +23,7 @@
         <module name="lib-entities-crm" />
         <module name="lib-entities-erp" />
         <module name="lib-esa-utils" />
+        <module name="lib-utils" />
         <module name="org.dieschnittstelle.jee.esa.bas" />
         <module name="org.dieschnittstelle.jee.esa.jws.client" />
         <module name="org.dieschnittstelle.jee.esa.ue.jws4" />
@@ -77,6 +62,7 @@
       <module name="lib-entities-crm" target="1.8" />
       <module name="lib-entities-erp" target="1.8" />
       <module name="lib-esa-utils" target="1.8" />
+      <module name="lib-utils" target="1.8" />
       <module name="org.dieschnittstelle.jee.esa.bas" target="1.8" />
       <module name="org.dieschnittstelle.jee.esa.jws.client" target="1.8" />
       <module name="org.dieschnittstelle.jee.esa.ue.jws4" target="1.8" />
